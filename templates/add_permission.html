@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {{ user }}
+    {% for permission in permission %}
+        
+        <input type="radio" id="age1" name="age" value="{{ permission.name }}">
+
+        {% endfor %}
+{% endblock %}
