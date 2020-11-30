@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if message %}
+    {{ message }}
+{% endif %}
+{% if proposals %}
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Category</th>
+        <th scope="col">Sub Category</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for proposal in proposals %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ proposal.category.name }}</td>
+        <td>{{ proposal.sub_category.name }}</td>
+        <td>{{ proposal.quantity }}</td>
+        <td>
+            <button class="btn btn-danger">Reject</button>
+            <button class="btn btn-success">Approve</button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+{% endblock %}

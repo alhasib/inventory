@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="col-md-8 m-auto pt-5">
+        {% if sub_category %}
+        {% for i in sub_category %}
+            <a href="{% url 'category_wise_product' i.name %}"><button type="submit" class = 'btn btn-warning btn-lg p-3 mt-3'>{{ i.name }}</button></a>
+        {% endfor %}
+        {% endif %}
+
+        {% if product %}
+       
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    
+                    <th scope="col">Name</th>
+                    <th scope="col">Unit Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Expence Quantity</th>
+                    <th scope="col">Available Quantity</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for i in product %}    
+                  <tr>
+                    
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.price }}</td>
+                    <td>{{ i.quantity }}</td>
+                    <td>{{ i.expense_quantity }}</td>
+                    <td>{{ i.available_quantity }}</td>
+                  </tr>  
+                  {% endfor %}               
+                </tbody>
+              </table>
+        {% endif %}
+        {% if message %}
+              {{ message }}
+        {% endif %}
+    </div>
+    
+{% endblock %}
